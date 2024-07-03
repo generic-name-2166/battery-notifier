@@ -23,17 +23,16 @@ namespace BatteryNotifier
             return ushort.MaxValue;
         }
 
-        static bool CheckSanity(out ushort percentage)
+        static bool CheckSanity()
         {
             var maybe = GetBattery();
             if (maybe == ushort.MaxValue)
             {
-                percentage = 0;
                 return false;
             }
             else
             {
-                percentage = maybe;
+                Notify(maybe);
                 return true;
             }
         }
@@ -69,16 +68,13 @@ namespace BatteryNotifier
             // Start the timer
             timer.Enabled = true;
 
-            // First event manual
-            Handle(null, null);
-
             Console.WriteLine("Press the Enter key to exit the program at any time... ");
             Console.ReadLine();
         }
 
         static int Main()
         {
-            if (!CheckSanity(out ushort percentage))
+            if (!CheckSanity())
             {
                 Console.WriteLine("Could not find a battery on this decvice");
                 return 1;
