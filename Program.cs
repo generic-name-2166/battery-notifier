@@ -1,20 +1,19 @@
-﻿using System.Management;
+﻿/* using System.Management; */
 using System.Runtime.Versioning;
+using WmiLight;
 
 namespace BatteryNotifier
 {
     [SupportedOSPlatform("windows")]
     class Program
     {
-        static ushort GetBattery()
-        {
+        static ushort GetBattery() {
             // https://stackoverflow.com/a/8946096
-            ObjectQuery query = new("SELECT * FROM Win32_Battery");
-            ManagementObjectSearcher searcher = new(query);
+            // https://github.com/MartinKuschnik/WmiLight//README.md
 
-            ManagementObjectCollection collection = searcher.Get();
-
-            foreach (ManagementObject mo in collection.Cast<ManagementObject>())
+            using WmiConnection con = new();
+            var collection = con.CreateQuery("SELECT * FROM Win32_Battery");
+            foreach (WmiObject mo in collection)
             {
                 var estimated = mo.GetPropertyValue("EstimatedChargeRemaining");
                 if (estimated is ushort v)
