@@ -61,8 +61,8 @@ namespace BatteryNotifier
             // 'Timer' is an ambiguous reference between 'System.Timers.Timer' and 'System.Threading.Timer'
             System.Timers.Timer timer = new();
 
-            const int TWO_MINUTES = 1000 * 60 * 2;
-            timer.Interval = TWO_MINUTES;
+            const int POLL_TIME = 1000 * 60;
+            timer.Interval = POLL_TIME;
             timer.Elapsed += Handle;
             timer.AutoReset = true;
             // Start the timer
