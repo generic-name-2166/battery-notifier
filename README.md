@@ -5,3 +5,4 @@ Windows app to notify when battery is too high or too low
 # Dependencies
 
 - [`WmiLight`](https://github.com/MartinKuschnik/WmiLight)
+- [`interoptopus`](https://crates.io/crates/interoptopus)

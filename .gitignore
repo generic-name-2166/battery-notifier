@@ -1,4 +1,10 @@
 obj/
 bin/
 
+build/
+
 .vscode/
+
+Cargo.lock
+target/
+bindings/

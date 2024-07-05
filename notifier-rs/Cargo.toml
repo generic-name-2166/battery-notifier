@@ -1,0 +1,20 @@
+[package]
+name = "notifier-rs"
+version = "0.1.0"
+edition = "2021"
+publish = false
+
+[lib]
+crate-type = ["cdylib", "rlib"]
+
+[dependencies]
+interoptopus = "0.14"
+notify-rust = "4.11"
+
+[dev-dependencies]
+interoptopus_backend_csharp = "0.14"
+
+[profile.release]
+codegen-units = 1
+lto = "fat"
+panic = "abort"

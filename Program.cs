@@ -1,5 +1,4 @@
-﻿/* using System.Management; */
-using System.Runtime.Versioning;
+﻿using System.Runtime.Versioning;
 using WmiLight;
 
 namespace BatteryNotifier
@@ -7,7 +6,8 @@ namespace BatteryNotifier
     [SupportedOSPlatform("windows")]
     class Program
     {
-        static ushort GetBattery() {
+        static ushort GetBattery()
+        {
             // https://stackoverflow.com/a/8946096
             // https://github.com/MartinKuschnik/WmiLight//README.md
 
@@ -47,6 +47,8 @@ namespace BatteryNotifier
                 Console.WriteLine($"Battery percent {percentage} too high. Disconnect charger");
             else
                 Console.WriteLine($"Battery percent {percentage}");
+
+            Notifier.notify(percentage);
         }
 
         static void Handle(object? source, System.Timers.ElapsedEventArgs? args)

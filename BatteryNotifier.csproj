@@ -2,6 +2,11 @@
 
   <PropertyGroup>
     <OutputType>Exe</OutputType>
+    <!-- 
+    This serves no purpose
+    <TargetFramework>net8.0-windows10.0.22000.0</TargetFramework>
+    <TargetPlatformMinVersion>10.0.17763.0</TargetPlatformMinVersion> 
+    -->
     <TargetFramework>net8.0</TargetFramework>
     <RootNamespace>BatteryNotifier</RootNamespace>
     <ImplicitUsings>enable</ImplicitUsings>
@@ -16,6 +21,21 @@
 
   <ItemGroup>
     <PackageReference Include="WmiLight" Version="6.1.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <!-- Rust lib -->
+    <Content 
+      Condition="'$([System.Runtime.InteropServices.RuntimeInformation]::IsOSPlatform($([System.Runtime.InteropServices.OSPlatform]::Linux)))'" 
+      Include="$(MSBuildProjectDirectory)/notifier-rs/target/release/libnotifier_rs.so"
+    >
+      <Link>%(Filename)%(Extension)</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Condition="'$(OS)' == 'Windows_NT'" Include="$(MSBuildProjectDirectory)/notifier-rs/target/release/notifier_rs.dll">
+      <Link>%(Filename)%(Extension)</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
 
 </Project>
