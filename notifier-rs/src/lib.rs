@@ -5,7 +5,7 @@ fn notify_(percentage: u16) -> error::Result<()> {
     let message: &str = match percentage {
         ..=47 => "too low. \nConnect a charger",
         48..=57 => return Ok(()),
-        58.. => "too high.\n Disconnect charger",
+        58.. => "too high. \nDisconnect charger",
     };
     let body: String = format!("Battery percent {percentage} ") + message;
 
