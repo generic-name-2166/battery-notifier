@@ -3,7 +3,7 @@ use notify_rust::{error, Notification, Timeout};
 
 fn notify_(percentage: u16) -> error::Result<()> {
     let message: &str = match percentage {
-        ..=47 => "too low.\n Connect a charger",
+        ..=47 => "too low. \nConnect a charger",
         48..=57 => return Ok(()),
         58.. => "too high.\n Disconnect charger",
     };
