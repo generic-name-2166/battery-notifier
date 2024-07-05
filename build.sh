@@ -6,9 +6,9 @@ cargo build --release
 cd ..
 dotnet build -c Release
 
-if (Test-Path -Path "build" -PathType Container) {
-  Remove-Item -Path "build" -Recurse -Force
-}
+if [ -d "build" ]; then
+  rm -rf "build"
+fi
 
 mkdir build
 cp bin/Release/net8.0/win-x64/* build
