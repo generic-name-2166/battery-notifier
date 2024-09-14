@@ -11,4 +11,4 @@ if [ -d "build" ]; then
 fi
 
 mkdir build
-cp bin/Release/net8.0/win-x64/* build
+cp bin/Release/net8.0/win-x64/publish/* build

@@ -11,7 +11,10 @@
     <RootNamespace>BatteryNotifier</RootNamespace>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
+    <!-- 
+    Cannot be specified with PublishAot for `dotnet publish`
     <PublishSingleFile>true</PublishSingleFile>
+    -->
     <SelfContained>true</SelfContained>
     <RuntimeIdentifier>win-x64</RuntimeIdentifier>
     <PublishAot>true</PublishAot>
