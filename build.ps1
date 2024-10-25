@@ -10,5 +10,5 @@ if (Test-Path -Path "build" -PathType Container) {
   Remove-Item -Path "build" -Recurse -Force
 }
 
-mkdir build
+mkdir build | Out-Null
 cp bin/Release/net8.0/win-x64/publish/* build

@@ -10,5 +10,5 @@ if [ -d "build" ]; then
   rm -rf "build"
 fi
 
-mkdir build
+mkdir build > /dev/null
 cp bin/Release/net8.0/win-x64/publish/* build
