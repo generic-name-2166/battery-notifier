@@ -1,9 +1,7 @@
-use std::time::Duration;
-
 use interoptopus::{ffi_function, function, Inventory, InventoryBuilder};
-use notify_rust::{error, Notification};
+use notify_rust::{error, Notification, Timeout};
 
-const FIVE_MINUTES: u64 = 60 * 5;
+const FIVE_MINUTES: u32 = 1000 * 60 * 5;
 
 fn notify_(percentage: u16) -> error::Result<()> {
     let message: &str = match percentage {
@@ -16,7 +14,7 @@ fn notify_(percentage: u16) -> error::Result<()> {
     Notification::new()
         .summary("Battery notification")
         .body(&body)
-        .timeout(Duration::from_secs(FIVE_MINUTES))
+        .timeout(Timeout::Milliseconds(FIVE_MINUTES))
         .show()
 }
 
